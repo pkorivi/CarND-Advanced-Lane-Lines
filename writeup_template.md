@@ -19,11 +19,9 @@ The goals / steps of this project are the following:
 
 [image1]: ./out_images/calib_original.png "Calibration"
 
-[image2]: ./out_images/lane_original.png "Road Transformed"
 [image3]: ./out_images/lane_binary.png "Binary Example"
 
-[image8]: ./out_images/original_perspective.png "Warp Original"
-[image4]: ./out_images/transformed_perspective.png "Warped Imaged"
+[image4]: ./out_images/transformed_perspective.png "Perspective Transformed Imaged"
 
 [image5]: ./out_images/color_fit_lines.jpg "Fit Visual"
 [image6]: ./out_images/lane_final.png "Output"
