@@ -63,26 +63,26 @@ The `warper()` function takes as inputs an image (`img`), as well as source (`sr
 # TODO - chnage code
 
 ```python
-src = np.float32(
-    [[(img_size[0] / 2) - 55, img_size[1] / 2 + 100],
-    [((img_size[0] / 6) - 10), img_size[1]],
-    [(img_size[0] * 5 / 6) + 60, img_size[1]],
-    [(img_size[0] / 2 + 55), img_size[1] / 2 + 100]])
-dst = np.float32(
-    [[(img_size[0] / 4), 0],
-    [(img_size[0] / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), img_size[1]],
-    [(img_size[0] * 3 / 4), 0]])
+y_max = undistorted.shape[0] #720
+y_min = undistorted.shape[0]/2 + 115 # A little above the mid of the image #475
+
+x_l_b = int(undistorted.shape[1]*0.165)#224
+x_r_b = int(undistorted.shape[1]*0.86) #1100
+x_r_t = int(undistorted.shape[1]*9/16) #720
+x_l_t = int(undistorted.shape[1]*7/16) #560
+
+src = np.float32([[(x_l_b,y_max),(x_r_b,y_max), (x_r_t, y_min),(x_l_t,y_min)]])
+dst = np.float32([[(x_l_b+50,y_max),(x_r_b-50,y_max), (x_r_b-50, 1),(x_l_b+50,1)]])
 ```
 
 This resulted in the following source and destination points:
 
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
-| 585, 460      | 320, 0        | 
-| 203, 720      | 320, 720      |
-| 1127, 720     | 960, 720      |
-| 695, 460      | 960, 0        |
+| 224, 720      | 274, 720      | 
+| 1100, 720     | 1050,720      |
+| 720, 475      | 1050,1        |
+| 560, 475      | 274, 1        |
 
 # TODO - verify the code
 
