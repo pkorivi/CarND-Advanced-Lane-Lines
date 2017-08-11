@@ -17,13 +17,18 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/undistort_output.png "Undistorted"
-[image2]: ./test_images/test1.jpg "Road Transformed"
-[image3]: ./examples/binary_combo_example.jpg "Binary Example"
-[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
-[video1]: ./project_video.mp4 "Video"
+[image1]: ./out_images/calib_original.png "Original"
+[image7]: ./out_images/calib_undist.png "Undistorted"
+
+[image2]: ./out_images/lane_original.png "Road Transformed"
+[image3]: ./out_images/lane_binary.png "Binary Example"
+
+[image8]: ./out_images/original_perspective.png "Warp Original"
+[image4]: ./out_images/transformed_perspective.png "Warped Imaged"
+
+[image5]: ./out_images/color_fit_lines.jpg "Fit Visual"
+[image6]: ./out_images/lane_final.png "Output"
+[video1]: ./out_project_video.mp4 "Video"
 
 ### Steps in Detail
 
@@ -37,7 +42,7 @@ I start by preparing "object points", which will be the (x, y, z) coordinates of
 
 I then used the output `objpoints` and `imgpoints` to compute the camera calibration and distortion coefficients using the `cv2.calibrateCamera()` function.  I applied this distortion correction to the test image using the `cv2.undistort()` function and obtained this result: 
 
-![alt text][image1]
+![alt text][image1] ![alt text][image7]
 
 ### Pipeline (single images)
 
