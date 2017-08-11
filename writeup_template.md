@@ -19,7 +19,7 @@ The goals / steps of this project are the following:
 
 [image1]: ./out_images/calib_original.png "Calibration"
 
-[image3]: ./out_images/lane_binary.png "Binary Example"
+[image3]: ./out_images/lane_binary_1.png "Binary Example"
 
 [image4]: ./out_images/transformed_perspective.png "Perspective Transformed Imaged"
 
