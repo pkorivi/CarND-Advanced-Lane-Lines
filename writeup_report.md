@@ -23,7 +23,7 @@ The goals / steps of this project are the following:
 
 [image4]: ./out_images/transformed_perspective.png "Perspective Transformed Imaged"
 
-[image5]: ./out_images/lane_identified.jpg "Fit Visual"
+[image5]: ./out_images/lane_identified.png "Fit Visual"
 [image6]: ./out_images/lane_final.png "Output"
 [video1]: ./out_project_video.mp4 "Video"
 
