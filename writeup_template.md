@@ -23,7 +23,7 @@ The goals / steps of this project are the following:
 
 [image4]: ./out_images/transformed_perspective.png "Perspective Transformed Imaged"
 
-[image5]: ./out_images/color_fit_lines.jpg "Fit Visual"
+[image5]: ./out_images/lane_identified.jpg "Fit Visual"
 [image6]: ./out_images/lane_final.png "Output"
 [video1]: ./out_project_video.mp4 "Video"
 
@@ -60,16 +60,14 @@ The code to calculate the perspective transform and inverse transform matrix is 
 
 The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
 
-# TODO - chnage code
-
 ```python
-y_max = undistorted.shape[0] #720
-y_min = undistorted.shape[0]/2 + 115 # A little above the mid of the image #475
+y_max = int(undistorted.shape[0]*0.93)
+y_min = int(undistorted.shape[0]/2+100)
 
-x_l_b = int(undistorted.shape[1]*0.165)#224
-x_r_b = int(undistorted.shape[1]*0.86) #1100
-x_r_t = int(undistorted.shape[1]*9/16) #720
-x_l_t = int(undistorted.shape[1]*7/16) #560
+x_l_b = int(undistorted.shape[1]*0.21)
+x_r_b = int(undistorted.shape[1]*0.82)
+x_r_t = int(undistorted.shape[1]*0.55)
+x_l_t = int(undistorted.shape[1]*0.45)
 
 src = np.float32([[(x_l_b,y_max),(x_r_b,y_max), (x_r_t, y_min),(x_l_t,y_min)]])
 dst = np.float32([[(x_l_b+50,y_max),(x_r_b-50,y_max), (x_r_b-50, 1),(x_l_b+50,1)]])
@@ -79,12 +77,10 @@ This resulted in the following source and destination points:
 
 | Source        | Destination   | 
 |:-------------:|:-------------:| 
-| 224, 720      | 274, 720      | 
-| 1100, 720     | 1050,720      |
-| 720, 475      | 1050,1        |
-| 560, 475      | 274, 1        |
-
-# TODO - verify the code
+| 270, 670      | 320, 670      | 
+| 1050, 670     | 1000,670      |
+| 700, 470      | 1000,1        |
+| 580, 470      | 320, 1        |
 
 I verified that my perspective transform was working as expected by drawing the `src` and `dst` points onto a test image and its warped counterpart to verify that the lines appear parallel in the warped image.
 
@@ -123,4 +119,8 @@ Here's a [link to my video result](./out_project_video.mp4)
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+There were many problems in solving this challenge:
+- The first is identifying the right ways to threshold images, I tried multiple color spaces and multiple thresholing ways but everything failed to some extant. I finally ended up using the initial model discussed in the course which isn't performing the best. 
+
+- The next problem is using the lane parameters to provide better fit to the lanes in case of wrong detections. I have implemented a simple memory of using previous good lane if there are bad fits but this didnt go well for the other challenge videos. Only the project video was working good. 
+
